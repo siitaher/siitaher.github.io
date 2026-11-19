@@ -1213,6 +1213,8 @@ h1.name.wave .ch{animation:wv .8s ease-in-out calc(var(--i)*70ms) both}
 <style>
 /* v18 polish layer */
 .contact .peek{display:none!important}
+.sb{inset-block-end:auto!important;inset-inline-end:auto!important;right:auto!important;bottom:auto!important;width:max-content!important;height:auto!important;max-width:calc(100vw - 24px)}
+@media(max-width:520px){.sb{top:auto!important;bottom:calc(76px + env(safe-area-inset-bottom,0px))!important}}
 .vhero .coin{display:none!important}
 .vhero{display:block!important}
 :root[lang="ar"] h1.name{text-align:end}
