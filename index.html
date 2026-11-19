@@ -557,7 +557,7 @@ s_views:["مشاهدات Instagram","Instagram views"],s_fol:["متابعين ع
 f_v:["مشاهدات","Views"],f_e:["تفاعل","Engagement"],f_f:["متابعين جداد","New follows"],
 rl_h:["أحسن الريلز.","Top reels."],rl_p:["التشكيلة · آخر 30 يوم","Line-up · last 30 days"],
 rl_lead:["الريلز المثبتة في البروفايل و أكبر 8 ريلز في آخر 30 يوم حسب المشاهدات. القائد: قرعة النادي الإفريقي.","The reels pinned on the profile, then the 8 biggest of the last 30 days by views. Captain: the Club Africain draw."],
-pn:["مثبت","PINNED"],pt1:["علاء","Alaa"],pt2:["معجزة باك: 20.01","A true bac miracle: 20.01"],pt3:["الوحيد اللي فاتنا","The only one we missed"],
+pn:["مثبت","PINNED"],pt1:["الجزائر ضد هولندا","Algeria vs Holland"],pt2:["معجزة باك: 20.01","A true bac miracle: 20.01"],pt3:["الوحيد اللي فاتنا","The only one we missed"],
 rl_note:["المصدر: Instagram. الأرقام تقريبية كيما تعرضها اللوحة. التواريخ نهار/شهر.","Source: Instagram. Figures rounded as the dashboard shows them. Dates are day/month."],
 au_h:["شكون يتفرج.","Who watches."],au_p:["صفحة 3 · الجمهور","Page 3 · audience"],
 au_gender:["الجنس","Gender"],men:["رجال","Men"],women:["نساء","Women"],au_age:["العمر (%)","Age (%)"],
@@ -593,7 +593,7 @@ const STATS=[
 const TYPES=[['Reels',13000,26000,'13M','26M'],['Stories',688,1600,'688K','1.6M'],['Posts',37,412,'37K','412K'],['Live',0,.3,'0','298']];
 const FB=[['c k3','FB · VIEWS','f_v','3.7M','+144%'],['c k2','FB · ENGAGEMENT','f_e','353K','+178%'],['c k1','FB · FOLLOWS','f_f','2,711','+130%']];
 const PINS=[['1.2M','pt1'],['1M','pt2'],['516K','pt3']];
-const REELS=[["610K","قرعة النادي الافريقي","28/10","25K","1.6K","1.6K","12K"],["477K","خرج لوبندا يا دراغر يهديك ر…","24/10","13K","113","775","1.8K"],["440K","ليبيا تربح تونس","5d","14K","638","976","7.8K"],["358K","كي تبدا تحب الترجي و ريال مدريد","25/10","32K","180","11K","10K"],["326K","قرعة الترجي الرياضي ال…","28/10","13K","53","857","1.9K"],["320K","الافريقي و الوطنية","21/10","9.3K","91","226","1.5K"],["287K","لامين يامال","26/10","8.9K","68","341","6K"],["285K","الترجي سيوقع عقد استشها…","6/11","19K","121","1.5K","2.7K"]];
+const REELS=[["610K","قرعة النادي الافريقي","28/10","25K","1.6K","1.6K","12K"],["477K","خرج لوبندا يا دراغر يهديك","24/10","13K","113","775","1.8K"],["440K","ليبيا تربح تونس","5d","14K","638","976","7.8K"],["358K","كي تبدا تحب الترجي و ريال مدريد","25/10","32K","180","11K","10K"],["326K","قرعة الترجي الرياضي ال…","28/10","13K","53","857","1.9K"],["320K","الافريقي و الوطنية","21/10","9.3K","91","226","1.5K"],["287K","لامين يامال","26/10","8.9K","68","341","6K"],["285K","الترجي سيوقع عقد استشها…","6/11","19K","121","1.5K","2.7K"]];
 const AGES=[['13-17',25.1],['18-24',34.2],['25-34',25.6],['35-44',8.5],['45-54',4.5],['55-64',1.1],['65+',.9]];
 const CTRY=[['c_tn',80.2],['c_dz',11.6],['c_fr',1.4],['c_tz',.9],['c_ma',.9]];
 const LANG=[['l_ar',65.5],['l_fr',29.5],['l_en',3.7],['l_it',.5],['l_sw',.3]];
@@ -1212,8 +1212,23 @@ h1.name.wave .ch{animation:wv .8s ease-in-out calc(var(--i)*70ms) both}
 </script>
 <style>
 /* v18 polish layer */
+/* lighter rendering on phones: iOS and in-app browsers reload tabs that use too much GPU memory */
+@media (max-width:860px),(pointer:coarse){
+  *,*::before,*::after{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+  .blob{filter:none!important;animation:none!important;will-change:auto!important;opacity:.35!important}
+  .b1{background:radial-gradient(circle,var(--blue),transparent 68%)!important}
+  .b2{background:radial-gradient(circle,var(--red),transparent 68%)!important;opacity:.22!important}
+  .b3{background:radial-gradient(circle,var(--cyan),transparent 68%)!important;opacity:.12!important}
+  .floor,.grain,.crowd,.beam{animation:none!important}
+  .grain{display:none!important}
+  .ring,.player img,.brand .sig{filter:none!important}
+  .bar{background:var(--bg)!important}
+}
 .contact .peek{display:none!important}
 .sb{inset-block-end:auto!important;inset-inline-end:auto!important;right:auto!important;bottom:auto!important;width:max-content!important;height:auto!important;max-width:calc(100vw - 24px)}
+.sb.goal{text-shadow:none!important;color:var(--ink)!important;display:flex!important;opacity:1}
+.sb.goal *{text-shadow:none!important}
+.sb.goal .sb-s b{text-shadow:0 0 10px rgba(95,208,138,.8)!important}
 .sb-s i{display:inline!important;width:auto!important;height:auto!important;background:none!important;box-shadow:none!important;animation:none!important;line-height:1}
 .sb-s{height:auto!important;align-self:center}
 @media(max-width:520px){.sb{gap:5px;padding:3px 7px 3px 5px;border-radius:10px;font-size:.8em}.sb-m{font-size:.6rem;padding:2px 5px;min-width:28px}.sb-t{font-size:.52rem;letter-spacing:.06em}.sb-s{padding:2px 7px;gap:3px}.sb-s b{font-size:.9rem}}
