@@ -975,10 +975,10 @@ if(document.fonts&&document.fonts.ready)document.fonts.ready.then(drawIdle);
 .sb-s i{color:#9DB8A6;font-style:normal;font-weight:800}
 .sb-s b.fl2{animation:sbflip .7s cubic-bezier(.2,1.6,.4,1)}
 @keyframes sbflip{0%{transform:rotateX(90deg) scale(.4);opacity:0}100%{transform:none;opacity:1}}
-.sb.goal{animation:sbin .01s forwards,sbgoal 1.6s ease-out}
+.sb.sbgoal{animation:sbin .01s forwards,sbgoal 1.6s ease-out}
 @keyframes sbgoal{0%,100%{box-shadow:0 8px 22px var(--shadow)}20%,60%{box-shadow:0 0 0 3px var(--lime),0 0 40px var(--lime);transform:scale(1.12)}}
 .sb-g{position:absolute;inset-inline-start:50%;top:-30px;translate:-50% 0;font:900 1.1rem 'Archivo',sans-serif;font-stretch:125%;color:var(--on-red);background:var(--red);padding:3px 12px;border-radius:99px;opacity:0;pointer-events:none;white-space:nowrap}
-.sb.goal .sb-g{animation:sbtag 1.6s cubic-bezier(.2,1.6,.4,1)}
+.sb.sbgoal .sb-g{animation:sbtag 1.6s cubic-bezier(.2,1.6,.4,1)}
 @keyframes sbtag{0%{opacity:0;transform:translateY(14px) scale(.5)}20%,70%{opacity:1;transform:none}100%{opacity:0;transform:translateY(-8px)}}
 @media(max-width:520px){.sb{top:calc(env(safe-area-inset-top,0px) + 58px);gap:6px;padding:4px 8px 4px 6px}.sb-t{font-size:.6rem}.sb-s b{font-size:1.05rem}}
 h1.name.wave .ch{animation:wv .8s ease-in-out calc(var(--i)*70ms) both}
@@ -997,7 +997,7 @@ h1.name.wave .ch{animation:wv .8s ease-in-out calc(var(--i)*70ms) both}
   const A=D.getElementById('sbA'),M=D.getElementById('sbm');
   setInterval(()=>{const c=D.getElementById('clk');if(!c)return;const t=c.textContent.trim();M.textContent=t.startsWith('90+')?'FT':(t=="0'"?"1'":t)},400);
   if(RM)return;
-  function goal(){A.textContent='1';A.classList.remove('fl2');void A.offsetWidth;A.classList.add('fl2');sb.classList.remove('goal');void sb.offsetWidth;sb.classList.add('goal');const r=sb.getBoundingClientRect();if(typeof boom==='function')boom(r.left+r.width/2,r.top+r.height/2)}
+  function goal(){A.textContent='1';A.classList.remove('fl2');void A.offsetWidth;A.classList.add('fl2');sb.classList.remove('sbgoal');void sb.offsetWidth;sb.classList.add('sbgoal');const r=sb.getBoundingClientRect();if(typeof boom==='function')boom(r.left+r.width/2,r.top+r.height/2)}
   setTimeout(goal,2900);
   sb.addEventListener('click',()=>{A.textContent='0';setTimeout(goal,700)});
   /* hero name wave */
@@ -1084,7 +1084,7 @@ h1.name.wave .ch{animation:wv .8s ease-in-out calc(var(--i)*70ms) both}
     sb.classList.toggle('end',innerHeight+scrollY>D.documentElement.scrollHeight-280);
     if(!w)return;const want=w.getBoundingClientRect().top<innerHeight*.55?2:1;
     if(+A.textContent!==want){A.textContent=want;A.classList.remove('fl2');void A.offsetWidth;A.classList.add('fl2');sb.setAttribute('aria-label','Siitaher '+want+', Others 0');
-      if(want===2&&!RM){sb.classList.remove('goal');void sb.offsetWidth;sb.classList.add('goal');const r=sb.getBoundingClientRect();if(typeof boom==='function')boom(r.left+r.width/2,r.top+r.height/2)}}
+      if(want===2&&!RM){sb.classList.remove('sbgoal');void sb.offsetWidth;sb.classList.add('sbgoal');const r=sb.getBoundingClientRect();if(typeof boom==='function')boom(r.left+r.width/2,r.top+r.height/2)}}
   },300);
 })();
 </script>
@@ -1212,6 +1212,8 @@ h1.name.wave .ch{animation:wv .8s ease-in-out calc(var(--i)*70ms) both}
 </script>
 <style>
 /* v18 polish layer */
+#sb,#sb *{text-shadow:none!important}
+#sb .sb-s b{text-shadow:0 0 10px rgba(95,208,138,.8)!important}
 /* lighter rendering on phones: iOS and in-app browsers reload tabs that use too much GPU memory */
 @media (max-width:860px),(pointer:coarse){
   *,*::before,*::after{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
@@ -1226,9 +1228,9 @@ h1.name.wave .ch{animation:wv .8s ease-in-out calc(var(--i)*70ms) both}
 }
 .contact .peek{display:none!important}
 .sb{inset-block-end:auto!important;inset-inline-end:auto!important;right:auto!important;bottom:auto!important;width:max-content!important;height:auto!important;max-width:calc(100vw - 24px)}
-.sb.goal{text-shadow:none!important;color:var(--ink)!important;display:flex!important;opacity:1}
-.sb.goal *{text-shadow:none!important}
-.sb.goal .sb-s b{text-shadow:0 0 10px rgba(95,208,138,.8)!important}
+.sb.sbgoal{text-shadow:none!important;color:var(--ink)!important;display:flex!important;opacity:1}
+.sb.sbgoal *{text-shadow:none!important}
+.sb.sbgoal .sb-s b{text-shadow:0 0 10px rgba(95,208,138,.8)!important}
 .sb-s i{display:inline!important;width:auto!important;height:auto!important;background:none!important;box-shadow:none!important;animation:none!important;line-height:1}
 .sb-s{height:auto!important;align-self:center}
 @media(max-width:520px){.sb{gap:5px;padding:3px 7px 3px 5px;border-radius:10px;font-size:.8em}.sb-m{font-size:.6rem;padding:2px 5px;min-width:28px}.sb-t{font-size:.52rem;letter-spacing:.06em}.sb-s{padding:2px 7px;gap:3px}.sb-s b{font-size:.9rem}}
